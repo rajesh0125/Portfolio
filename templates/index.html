@@ -49,7 +49,7 @@
                 </div>
             </div>
 
-            <div class="info-sec" style="margin-top: -61px;">
+            <div class="info-sec" style="margin-top: -15px;">
                 <div class="info-card" data-aos="fade-in" data-aos-duration="1000" data-aos-delay="1600">
                     <h1>2+</h1>
                     <p>Years of <br> Experience</p>
@@ -317,31 +317,31 @@
   // Initialize AOS (Animate on Scroll)
   AOS.init();
 
-  // Handle contact form submission using Formspree
-  const form = document.getElementById("contactform");
-  form.addEventListener("submit", function (e) {
-    e.preventDefault();
+ // Handle contact form submission using Formspree
+        const form = document.getElementById("contactform");
+        if (form) {
+            form.addEventListener("submit", function (e) {
+                e.preventDefault();
 
-    const data = new FormData(form);
+                const data = new FormData(form);
 
-    fetch(form.action, {
-      method: "POST",
-      body: data,
-      headers: {
-        'Accept': 'application/json'
-      }
-    }).then(response => {
-      if (response.ok) {
-        alert("Thank you! Your message has been sent.");
-        form.reset(); // ✅ Clear the form
-      } else {
-        alert("Oops! Something went wrong. Please try again later.");
-      }
-    }).catch(error => {
-      alert("Error: " + error.message);
-    });
-  });
-
+                fetch(form.action, {
+                    method: "POST",
+                    body: data,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                }).then(response => {
+                    if (response.ok) {
+                        alert("Thank you! Your message has been sent.");
+                        form.reset();
+                    } else {
+                        alert("Oops! Something went wrong. Please try again later.");
+                    }
+                }).catch(error => {
+                    alert("Error: " + error.message);
+                });
+            });
   // Update active navigation link on scroll
   const sections = document.querySelectorAll('.section');
   const navLinks = document.querySelectorAll('nav ul li a');
