@@ -9,6 +9,8 @@ def project(request):
 def services(request):
     return render(request, 'services.html')
 def contact(request):
-    return render(request, 'contact.html') 
+    return render(request, 'contact.html')
+def shop(request):
+    return render(request, 'shop.html') 
 
 

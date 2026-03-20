@@ -1,0 +1,1295 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="google-adsense-account" content="ca-pub-8879878528046249">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8879878528046249" crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop | Rajesh Gupta - Cybersecurity Professional</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #4acfee;
+            --primary-dark: #2ba0c7;
+            --primary-glow: rgba(74, 207, 238, 0.5);
+            --secondary: #53f8c9;
+            --dark: #0a0c0f;
+            --dark-light: #1a1e24;
+            --glass: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(74, 207, 238, 0.2);
+            --text: #ffffff;
+            --text-dim: rgba(255, 255, 255, 0.8);
+            --flipkart: #2874f0;
+            --amazon: #ff9900;
+            --myntra: #e62e7a;
+            --shopsy: #ff6b6b;
+        }
+
+        body {
+            background-color: var(--dark);
+            color: var(--text);
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .back-vid {
+            position: fixed;
+            min-width: 100%;
+            min-height: 100%;
+            object-fit: cover;
+            z-index: -1;
+            opacity: 0.6;
+        }
+
+        .main-section {
+            width: 100vw;
+            height: 100vh;
+            background: rgba(10, 12, 15, 0.75);
+            backdrop-filter: blur(15px);
+            overflow-y: auto;
+        }
+
+        /* ===== NAVIGATION - EXACT COPY FROM ABOUT PAGE ===== */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            background: rgba(10, 12, 15, 0.9);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        nav h1 {
+            color: var(--text);
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        nav h1 span {
+            color: #4acfee;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 10px;
+        }
+
+        nav ul li a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            padding: 8px 20px;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+        }
+
+        nav ul li a:hover,
+        nav ul li a.active {
+            background: var(--primary);
+            color: var(--dark);
+            box-shadow: 0 0 20px var(--primary-glow);
+        }
+
+        /* Mobile menu toggle */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 21px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .menu-toggle span {
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+
+        /* Shop Section */
+        .section {
+            padding: 30px 5%;
+        }
+
+        .section-title {
+            font-size: 42px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .section-title span {
+            color: var(--primary);
+        }
+
+        .shop-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .shop-header h2 {
+            font-size: 32px;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        /* Store Categories */
+        .store-categories {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .category-btn {
+            padding: 12px 30px;
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            border-radius: 40px;
+            color: var(--text);
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .category-btn i {
+            font-size: 22px;
+        }
+
+        .category-btn.active {
+            background: var(--primary);
+            color: var(--dark);
+            border-color: var(--primary);
+        }
+
+        /* Back Button */
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 30px;
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            border-radius: 40px;
+            color: var(--text);
+            cursor: pointer;
+            margin-bottom: 25px;
+            transition: 0.3s;
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        .back-btn:hover {
+            background: var(--primary);
+            color: var(--dark);
+        }
+
+        .back-btn i {
+            font-size: 20px;
+        }
+
+        /* Store Grid - All Stores View */
+        .store-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .store-section {
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .store-section:hover {
+            border-color: var(--primary);
+            box-shadow: 0 10px 20px var(--primary-glow);
+        }
+
+        .store-header {
+            padding: 25px;
+            text-align: center;
+            border-bottom: 1px solid var(--glass-border);
+            background: rgba(255, 255, 255, 0.02);
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .store-header:hover {
+            background: rgba(74, 207, 238, 0.1);
+        }
+
+        .store-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            font-size: 48px;
+        }
+
+        .store-icon.flipkart { 
+            color: var(--flipkart); 
+            background: rgba(40, 116, 240, 0.1);
+        }
+        .store-icon.amazon { 
+            color: var(--amazon); 
+            background: rgba(255, 153, 0, 0.1);
+        }
+        .store-icon.myntra { 
+            color: var(--myntra); 
+            background: rgba(230, 46, 122, 0.1);
+        }
+        .store-icon.shopsy { 
+            color: var(--shopsy); 
+            background: rgba(255, 107, 107, 0.1);
+        }
+
+        .store-header h3 {
+            font-size: 28px;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .store-offer {
+            display: inline-block;
+            padding: 5px 15px;
+            background: rgba(255, 77, 77, 0.1);
+            color: #ff4d4d;
+            border-radius: 20px;
+            font-size: 14px;
+        }
+
+        /* Product Grid */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            padding: 25px;
+        }
+
+        .product-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--glass-border);
+            border-radius: 15px;
+            padding: 15px;
+            transition: 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-card:hover {
+            background: rgba(74, 207, 238, 0.1);
+            border-color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .product-img {
+            width: 100%;
+            height: 150px;
+            background: var(--dark-light);
+            border-radius: 10px;
+            margin-bottom: 15px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .product-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .product-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--text);
+            line-height: 1.4;
+        }
+
+        .product-price {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+            flex-wrap: wrap;
+        }
+
+        .current-price {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .original-price {
+            font-size: 14px;
+            color: var(--text-dim);
+            text-decoration: line-through;
+        }
+
+        .discount {
+            font-size: 12px;
+            background: rgba(76, 175, 80, 0.1);
+            color: #4caf50;
+            padding: 3px 8px;
+            border-radius: 12px;
+        }
+
+        .rating {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            margin-bottom: 15px;
+            color: #ffc107;
+        }
+
+        .rating span {
+            color: var(--text-dim);
+            font-size: 13px;
+        }
+
+        .buy-btn {
+            width: 100%;
+            padding: 10px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border: none;
+            border-radius: 25px;
+            color: var(--dark);
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            text-decoration: none;
+            margin-top: auto;
+        }
+
+        .buy-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px var(--primary-glow);
+        }
+
+        /* ===== FOOTER SECTION WITH AFFILIATE LINKS ===== */
+        .shop-footer {
+            margin-top: 50px;
+            padding: 40px 5%;
+            background: rgba(10, 12, 15, 0.8);
+            border-top: 2px solid var(--glass-border);
+            border-radius: 30px 30px 0 0;
+            backdrop-filter: blur(10px);
+        }
+
+        .footer-title {
+            font-size: 28px;
+            color: var(--primary);
+            text-align: center;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .footer-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--primary), var(--secondary), transparent);
+        }
+
+        .store-links-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .store-link-card {
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 30px 20px;
+            text-align: center;
+            transition: 0.3s;
+            text-decoration: none;
+            display: block;
+        }
+
+        .store-link-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            box-shadow: 0 10px 20px var(--primary-glow);
+        }
+
+        .store-link-icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            font-size: 40px;
+        }
+
+        .bx.bxl-flipkart:before {
+            content: "🛒";
+        }
+        .store-link-card.flipkart .store-link-icon { 
+            color: var(--flipkart); 
+            background: rgba(40, 116, 240, 0.15);
+        }
+        .store-link-card.amazon .store-link-icon { 
+            color: var(--amazon); 
+            background: rgba(255, 153, 0, 0.15);
+        }
+        .store-link-card.myntra .store-link-icon { 
+            color: var(--myntra); 
+            background: rgba(230, 46, 122, 0.15);
+        }
+        .store-link-card.shopsy .store-link-icon { 
+            color: var(--shopsy); 
+            background: rgba(255, 107, 107, 0.15);
+        }
+
+        .store-link-card h4 {
+            font-size: 22px;
+            color: var(--text);
+            margin-bottom: 10px;
+        }
+
+        .store-link-card .store-badge {
+            display: inline-block;
+            padding: 5px 15px;
+            background: var(--primary);
+            color: var(--dark);
+            border-radius: 25px;
+            font-size: 13px;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .store-link-card:hover .store-badge {
+            background: transparent;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .affiliate-note {
+            text-align: center;
+            padding: 20px;
+            color: var(--text-dim);
+            font-size: 14px;
+            border-top: 1px solid var(--glass-border);
+            margin-top: 20px;
+        }
+
+        .affiliate-note i {
+            color: var(--primary);
+            margin: 0 5px;
+        }
+
+        .affiliate-note a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .affiliate-note a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .product-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 992px) {
+            .product-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .store-links-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+            }
+            
+            .menu-toggle {
+                display: flex;
+            }
+            
+            .section-title {
+                font-size: 32px;
+            }
+            
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .store-links-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-title {
+                font-size: 24px;
+            }
+        }
+
+        /* Mobile Menu Active State */
+        nav ul.active {
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            top: 70px;
+            left: 0;
+            right: 0;
+            background: rgba(10, 12, 15, 0.95);
+            padding: 20px;
+            border-bottom: 1px solid var(--glass-border);
+        }
+    </style>
+</head>
+<body>
+    <video autoplay loop muted plays-inline class="back-vid">
+        <source src="{% static 'images/galaxy.mp4' %}" type="video/mp4">
+    </video>
+    
+    <section class="main-section">
+        <!-- Navbar - EXACT COPY FROM ABOUT PAGE -->
+        <nav>
+            <h1 data-aos="zoom-in" data-aos-duration="1000"><span style="color: #4acfee;">Cyber</span>Security</h1>
+            <div class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/about/">About</a></li>
+                <li><a href="/projects/">Projects</a></li>
+                <li><a href="/services/">Services</a></li>
+                <li><a href="/contact/">Contact</a></li>
+                <li><a class="active" href="/shop/">Shop</a></li>
+            </ul>
+        </nav>
+
+        <div class="section">
+            <h1 class="section-title">Shop <span>With Me</span></h1>
+            
+            <div class="shop-header">
+                <h2>🛍️ Cybersecurity & Tech Deals</h2>
+                <p>Best prices on hacking gadgets, security tools, and more</p>
+            </div>
+
+            <!-- Store Categories -->
+            <div class="store-categories" id="categoryBtns">
+                <button class="category-btn active" data-store="all"><i class='bx bx-grid-alt'></i> All Products</button>
+                <button class="category-btn" data-store="flipkart"><i class='bx bxl-flipkart'></i> Flipkart</button>
+                <button class="category-btn" data-store="amazon"><i class='bx bxl-amazon'></i> Amazon</button>
+                <button class="category-btn" data-store="shopsy"><i class='bx bx-store-alt'></i> ShopSy</button>
+                <button class="category-btn" data-store="myntra"><i class='bx bx-shopping-bag'></i> Myntra</button>
+            </div>
+
+            <!-- Back Button (hidden by default) -->
+            <div id="backBtnContainer" style="display: none;">
+                <button class="back-btn" onclick="showAllStores()">
+                    <i class='bx bx-arrow-back'></i> Back to All Products
+                </button>
+            </div>
+
+            <!-- Store Grid - All products in order: Flipkart, Amazon, ShopSy, Myntra -->
+            <div class="store-grid" id="storeGrid">
+                <!-- FLIPKART SECTION -->
+                <div class="store-section" data-store="flipkart">
+                    <div class="store-header" onclick="filterStore('flipkart')">
+                        <div class="store-icon flipkart"><i class='bx bxl-flipkart'></i></div>
+                        <h3>Flipkart</h3>
+                        <span class="store-offer">Up to 70% OFF</span>
+                    </div>
+                    <div class="product-grid">
+                        <!-- Product 1 -->
+                        <div class="product-card">
+                            <div class="product-img">
+                                <img src="https://m.media-amazon.com/images/I/81VPPG2wBOL._SL1500_.jpg" alt="Blackberry Hacks">
+                            </div>
+                            <div class="product-title">O'Reilly Media Blackberry Hacks</div>
+                            <div class="product-price">
+                                <span class="current-price">₹2893</span>
+                                <span class="original-price">₹4122</span>
+                                <span class="discount">30%</span>
+                            </div>
+                            <div class="rating">
+                                <i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star-half'></i>
+                                <span>(245)</span>
+                            </div>
+                            <a href="https://fktr.in/Vf52kEv" class="buy-btn" target="_blank"><i class='bx bx-cart-add'></i> Buy Now</a>
+                        </div>
+                        <!-- Product 2 -->
+                        <div class="product-card">
+                            <div class="product-img">
+                                <img src="https://m.media-amazon.com/images/I/51YRuNnOOxL.jpg" alt="Usb Adapter">
+                            </div>
+                            <div class="product-title">TP-Link USB Adapter (White)</div>
+                            <div class="product-price">
+                                <span class="current-price">₹599</span>
+                                <span class="original-price">₹1327</span>
+                                <span class="discount">55%</span>
+                            </div>
+                            <div class="rating">
+                                <i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i>
+                                <span>(9972)</span>
+                            </div>
+                            <a href="https://fktr.in/1TK2pMI" class="buy-btn" target="_blank"><i class='bx bx-cart-add'></i> Buy Now</a>
+                        </div>
+                        <!-- Product 3 -->
+                        <div class="product-card">
+                            <div class="product-img">
+                                <img src="https://cpimg.tistatic.com/09229579/b/4/Hard-Disk-Sandisk-Extreme-E61-SSD-1050MBPS-1TB.png" alt="SanDisk E61">
+                            </div>
+                            <div class="product-title">SanDisk E61 1 TB External SSD 1050 Mb/s</div>
+                            <div class="product-price">
+                                <span class="current-price">₹20700</span>
+                                <span class="original-price">₹21700</span>
+                                <span class="discount">9%</span>
+                            </div>
+                            <div class="rating">
+                                <i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star-half'></i>
+                                <span>(10300)</span>
+                            </div>
+                            <a href="https://fktr.in/BCs4C5P" class="buy-btn" target="_blank"><i class='bx bx-cart-add'></i> Buy Now</a>
+                        </div>
+                        <!-- Product 4 -->
+                        <div class="product-card">
+                            <div class="product-img">
+                                <img src="https://rukminim2.flixcart.com/image/312/312/xif0q/security-tool/e/4/d/v4s-deauther-watch-v4s-original-imah3m4qjhyhgzfj.jpeg?q=70" alt="Deauther Watch">
+                            </div>
+                            <div class="product-title">Deauther Watch V4S</div>
+                            <div class="product-price">
+                                <span class="current-price">₹5,499</span>
+                                <span class="original-price">₹8,999</span>
+                                <span class="discount">39%</span>
+                            </div>
+                            <div class="rating">
+                                <i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i>
+                                <span>(432)</span>
+                            </div>
+                            <a href="#" class="buy-btn" target="_blank"><i class='bx bx-cart-add'></i> Buy Now</a>
+                        </div>
+                        <!-- Product 5 -->
+                        <div class="product-card">
+                            <div class="product-img">
+                                <img src="https://rukminim2.flixcart.com/image/312/312/xif0q/security-tool/e/f/e/usb-rubber-ducky-usb-rubber-ducky-original-imah3mnpynjyhzgj.jpeg?q=70" alt="USB Rubber Ducky">
+                            </div>
+                            <div class="product-title">USB Rubber Ducky</div>
+                            <div class="product-price">
+                                <span class="current-price">₹2,499</span>
+                                <span class="original-price">₹3,999</span>
+                                <span class="discount">37%</span>
+                            </div>
+                            <div class="rating">
+                                <i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star-half'></i>
+                                <span>(876)</span>
+                            </div>
+                            <a href="#" class="buy-btn" target="_blank"><i class='bx bx-cart-add'></i> Buy Now</a>
+                        </div>
+                        <!-- Product 6 -->
+                        <div class="product-card">
+                            <div class="product-img">
+                                <img src="https://rukminim2.flixcart.com/image/312/312/xif0q/security-tool/a/z/g/wifi-deauther-esp8266-wifi-deauther-original-imah3mprxjfegfdy.jpeg?q=70" alt="WiFi Deauther">
+                            </div>
+                            <div class="product-title">WiFi Deauther ESP8266</div>
+                            <div class="product-price">
+                                <span class="current-price">₹1,799</span>
+                                <span class="original-price">₹2,999</span>
+                                <span class="discount">40%</span>
+                            </div>
+                            <div class="rating">
+                                <i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i>
+                                <span>(1.2k)</span>
+                            </div>
+                            <a href="#" class="buy-btn" target="_blank"><i class='bx bx-cart-add'></i> Buy Now</a>
+                        </div>
+                        <!-- Product 7 -->
+                        <div class="product-card">
+                            <div class="product-img">
+                                <img src="https://rukminim2.flixcart.com/image/312/312/xif0q/security-tool/8/5/3/proxmark3-rdv4-proxmark3-original-imah3mpmzjhyz9gt.jpeg?q=70" alt="Proxmark3">
+                            </div>
+                            <div class="product-title">Proxmark3 RDV4</div>
+                            <div class="product-price">
+                                <span class="current-price">₹8,499</span>
+                                <span class="original-price">₹12,999</span>
+                                <span class="discount">35%</span>
+                            </div>
+                            <div class="rating">
+                                <i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star-half'></i>
+                                <span>(234)</span>
+                            </div>
+                            <a href="#" class="buy-btn" target="_blank"><i class='bx bx-cart-add'></i> Buy Now</a>
+                        </div>
+                        <!-- Product 8 -->
+                        <div class="product-card">
+                            <div class="product-img">
+                                <img src="https://rukminim2.flixcart.com/image/312/312/xif0q/security-tool/s/8/5/hackrf-one-hackrf-one-original-imah3mpqgtwzghda.jpeg?q=70" alt="HackRF One">
+                            </div>
+                            <div class="product-title">HackRF One SDR</div>
+                            <div class="product-price">
+                                <span class="current-price">₹14,999</span>
+                                <span class="original-price">₹19,999</span>
+                                <span class="discount">25%</span>
+                            </div>
+                            <div class="rating">
+                                <i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i>
+                                <span>(98)</span>
+                            </div>
+                            <a href="#" class="buy-btn" target="_blank"><i class='bx bx-cart-add'></i> Buy Now</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AMAZON SECTION -->
+                <div class="store-section" data-store="amazon">
+                    <div class="store-header" onclick="filterStore('amazon')">
+                        <div class="store-icon amazon"><i class='bx bxl-amazon'></i></div>
+                        <h3>Amazon</h3>
+                        <span class="store-offer">Great Indian Sale</span>
+                    </div>
+                    <div class="product-grid">
+                        <!-- Product 1 -->
+                        <div class="product-card">
+                            <div class="product-img">
+                                <img src="https://images-na.ssl-images-amazon.com/images/I/41f6Sa6Mx8L._SX332_BO1,204,203,200_.jpg" alt="Hacker Playbook">
+                            </div>
+                            <div class="product-title">The Hacker Playbook 3</div>
+                            <div class="product-price">
+                                <span class="current-price">₹2,499</span>
+                                <span class="original-price">₹3,999</span>
+                                <span class="discount">37%</span>
+                            </div>
+                            <div class="rating">
+                                <i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star-half'></i>
+                                <span>(1.8k)</span>
+                            </div>
+                            <a href="#" class="buy-btn" target="_blank"><i class='bx bx-cart-add'></i> Buy Now</a>
+                        </div>
+                        <!-- Product 2 -->
+                        <div class="product-card">
+                            <div class="product-img">
+                                <img src="https://m.media-amazon.com/images/I/41fVzYxQ9JL._SX300_SY300_QL70_FMwebp_.jpg" alt="WiFi Pineapple">
+                            </div>
+                            <div class="product-title">WiFi Pineapple Mark VII</div>
+                            <div class="product-price">
+                                <span class="current-price">₹15,999</span>
+                                <span class="original-price">₹22,999</span>
+                                <span class="discount">30%</span>
+                            </div>
+                            <div class="rating">
+                                <i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i>
+                                <span>(567)</span>
+                            </div>
+                            <a href="#" class="buy-btn" target="_blank"><i class='bx bx-cart-add'></i> Buy Now</a>
+                        </div>
+                        <!-- Product 3 -->
+                        <div class="product-card">
+                            <div class="product-img">
+                                <img src="https://m.media-amazon.com/images/I/31m9yI6pOtL._SX300_SY300_QL70_FMwebp_.jpg" alt="USB Rubber Ducky">
+                            </div>
+                            <div class="product-title">Official USB Rubber Ducky</div>
+                            <div class="product-price">
+                                <span class="current-price">₹5,999</span>
+                                <span class="original-price">₹8,999</span>
+                                <span class="discount">33%</span>
+                            </div>
+                            <div class="rating">
+                                <i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star-half'></i>
+                                <span>(1.2k)</span>
+                            </div>
+                            <a href="#" class="buy-btn" target="_blank"><i class='bx bx-cart-add'></i> Buy Now</a>
+                        </div>
+                        <!-- Product 4 -->
+                        <div class="product-card">
+                            <div class="product-img">
+                                <img src="https://images-na.ssl-images-amazon.com/images/I/51p5HrT5BxL._SX379_BO1,204,203,200_.jpg" alt="Kali Linux Book">
+                            </div>
+                            <div class="product-title">Kali Linux Revealed</div>
+                            <div class="product-price">
+                                <span class="current-price">₹1,799</span>
+                                <span class="original-price">₹2,999</span>
+                                <span class="discount">40%</span>
+                            </div>
+                            <div class="rating">
+                                <i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i>
+                                <span>(2.3k)</span>
+                            </div>
+                            <a href="#" class="buy-btn" target="_blank"><i class='bx bx-cart-add'></i> Buy Now</a>
+                        </div>
+                        <!-- Product 5 -->
+                        <div class="product-card">
+                            <div class="product-img">
+                                <img src="https://m.media-amazon.com/images/I/41jFdQ-J2jL._SX300_SY300_QL70_FMwebp_.jpg" alt="HackRF One">
+                            </div>
+                            <div class="product-title">HackRF One SDR</div>
+                            <div class="product-price">
+                                <span class="current-price">₹16,999</span>
+                                <span class="original-price">₹24,999</span>
+                                <span class="discount">32%</span>
+                            </div>
+                            <div class="rating">
+                                <i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star-half'></i>
+                                <span>(345)</span>
+                            </div>
+                            <a href="#" class="buy-btn" target="_blank"><i class='bx bx-cart-add'></i> Buy Now</a>
+                        </div>
+                        <!-- Product 6 -->
+                        <div class="product-card">
+                            <div class="product-img">
+                                <img src="https://m.media-amazon.com/images/I/31wT9e3DqJL._SX300_SY300_QL70_FMwebp_.jpg" alt="Proxmark3">
+                            </div>
+                            <div class="product-title">Proxmark3 Easy</div>
+                            <div class="product-price">
+                                <span class="current-price">₹4,999</span>
+                                <span class="original-price">₹7,999</span>
+                                <span class="discount">37%</span>
+                            </div>
+                            <div class="rating">
+                                <i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i>
+                                <span>(876)</span>
+                            </div>
+                            <a href="#" class="buy-btn" target="_blank"><i class='bx bx-cart-add'></i> Buy Now</a>
+                        </div>
+                        <!-- Product 7 -->
+                        <div class="product-card">
+                            <div class="product-img">
+                                <img src="https://m.media-amazon.com/images/I/31vZzQxG8CL._SX300_SY300_QL70_FMwebp_.jpg" alt="GSM Bug">
+                            </div>
+                            <div class="product-title">GSM Listening Bug</div>
+                            <div class="product-price">
+                                <span class="current-price">₹3,199</span>
+                                <span class="original-price">₹5,999</span>
+                                <span class="discount">47%</span>
+                            </div>
+                            <div class="rating">
+                                <i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star-half'></i>
+                                <span>(432)</span>
+                            </div>
+                            <a href="#" class="buy-btn" target="_blank"><i class='bx bx-cart-add'></i> Buy Now</a>
+                        </div>
+                        <!-- Product 8 -->
+                        <div class="product-card">
+                            <div class="product-img">
+                                <img src="https://m.media-amazon.com/images/I/41wB-7v2LOL._SX300_SY300_QL70_FMwebp_.jpg" alt="Laptop Safe">
+                            </div>
+                            <div class="product-title">SECUTECH Laptop Safe</div>
+                            <div class="product-price">
+                                <span class="current-price">₹5,845</span>
+                                <span class="original-price">₹8,999</span>
+                                <span class="discount">35%</span>
+                            </div>
+                            <div class="rating">
+                                <i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i>
+                                <span>(654)</span>
+                            </div>
+                            <a href="#" class="buy-btn" target="_blank"><i class='bx bx-cart-add'></i> Buy Now</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SHOPSY SECTION (6 Products) -->
+                <div class="store-section" data-store="shopsy">
+                    <div class="store-header" onclick="filterStore('shopsy')">
+                        <div class="store-icon shopsy"><i class='bx bx-store-alt'></i></div>
+                        <h3>ShopSy</h3>
+                        <span class="store-offer">Big Sale - Up to 60% OFF</span>
+                    </div>
+                    <div class="product-grid">
+                        <!-- Product 1 - Wireless Earbuds -->
+                        <div class="product-card">
+                            <div class="product-img">
+                                <img src="https://rukminim2.flixcart.com/image/312/312/xif0q/headphone/q/7/d/-original-imah2zgzqzghyzfz.jpeg?q=70" alt="Wireless Earbuds">
+                            </div>
+                            <div class="product-title">Wireless Bluetooth Earbuds</div>
+                            <div class="product-price">
+                                <span class="current-price">₹1,299</span>
+                                <span class="original-price">₹2,999</span>
+                                <span class="discount">57%</span>
+                            </div>
+                            <div class="rating">
+                                <i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star-half'></i>
+                                <span>(4.8k)</span>
+                            </div>
+                            <a href="#" class="buy-btn" target="_blank"><i class='bx bx-cart-add'></i> Buy Now</a>
+                        </div>
+
+                        <!-- Product 2 - Smart Watch -->
+                        <div class="product-card">
+                            <div class="product-img">
+                                <img src="https://rukminim2.flixcart.com/image/312/312/xif0q/smartwatch/z/e/p/1-96-bluetooth-calling-smartwatch-bt-calling-ai-voice-assistant-original-imah2pz3hzgzt4hj.jpeg?q=70" alt="Smart Watch">
+                            </div>
+                            <div class="product-title">Smart Watch with Bluetooth Calling</div>
+                            <div class="product-price">
+                                <span class="current-price">₹1,999</span>
+                                <span class="original-price">₹4,999</span>
+                                <span class="discount">60%</span>
+                            </div>
+                            <div class="rating">
+                                <i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i>
+                                <span>(3.2k)</span>
+                            </div>
+                            <a href="#" class="buy-btn" target="_blank"><i class='bx bx-cart-add'></i> Buy Now</a>
+                        </div>
+
+                        <!-- Product 3 - Power Bank -->
+                        <div class="product-card">
+                            <div class="product-img">
+                                <img src="https://rukminim2.flixcart.com/image/312/312/xif0q/power-bank/n/j/z/20000-mah-22-5w-fast-charging-3-outputs-power-bank-22-5w-20000-original-imah3gxqy4vhfk6m.jpeg?q=70" alt="Power Bank">
+                            </div>
+                            <div class="product-title">20000mAh Power Bank Fast Charging</div>
+                            <div class="product-price">
+                                <span class="current-price">₹1,299</span>
+                                <span class="original-price">₹2,499</span>
+                                <span class="discount">48%</span>
+                            </div>
+                            <div class="rating">
+                                <i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star-half'></i>
+                                <span>(6.1k)</span>
+                            </div>
+                            <a href="#" class="buy-btn" target="_blank"><i class='bx bx-cart-add'></i> Buy Now</a>
+                        </div>
+
+                        <!-- Product 4 - Gaming Mouse -->
+                        <div class="product-card">
+                            <div class="product-img">
+                                <img src="https://rukminim2.flixcart.com/image/312/312/xif0q/mouse/q/g/c/-original-imah4gzdhqgfjbfy.jpeg?q=70" alt="Gaming Mouse">
+                            </div>
+                            <div class="product-title">Wireless Gaming Mouse</div>
+                            <div class="product-price">
+                                <span class="current-price">₹699</span>
+                                <span class="original-price">₹1,499</span>
+                                <span class="discount">53%</span>
+                            </div>
+                            <div class="rating">
+                                <i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i>
+                                <span>(8.5k)</span>
+                            </div>
+                            <a href="#" class="buy-btn" target="_blank"><i class='bx bx-cart-add'></i> Buy Now</a>
+                        </div>
+
+                        <!-- Product 5 - Laptop Backpack -->
+                        <div class="product-card">
+                            <div class="product-img">
+                                <img src="https://rukminim2.flixcart.com/image/312/312/xif0q/backpack/f/y/r/-original-imah2e2gzhzuqjfu.jpeg?q=70" alt="Laptop Backpack">
+                            </div>
+                            <div class="product-title">Laptop Backpack 15.6 inch</div>
+                            <div class="product-price">
+                                <span class="current-price">₹899</span>
+                                <span class="original-price">₹1,999</span>
+                                <span class="discount">55%</span>
+                            </div>
+                            <div class="rating">
+                                <i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star-half'></i>
+                                <span>(4.2k)</span>
+                            </div>
+                            <a href="#" class="buy-btn" target="_blank"><i class='bx bx-cart-add'></i> Buy Now</a>
+                        </div>
+
+                        <!-- Product 6 - USB-C Hub -->
+                        <div class="product-card">
+                            <div class="product-img">
+                                <img src="https://rukminim2.flixcart.com/image/312/312/xif0q/hub/u/w/4/-original-imah2hzggzghfyfc.jpeg?q=70" alt="USB-C Hub">
+                            </div>
+                            <div class="product-title">USB-C Hub 7-in-1 Adapter</div>
+                            <div class="product-price">
+                                <span class="current-price">₹1,499</span>
+                                <span class="original-price">₹3,499</span>
+                                <span class="discount">57%</span>
+                            </div>
+                            <div class="rating">
+                                <i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i>
+                                <span>(2.9k)</span>
+                            </div>
+                            <a href="#" class="buy-btn" target="_blank"><i class='bx bx-cart-add'></i> Buy Now</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- MYNTRA SECTION -->
+                <div class="store-section" data-store="myntra">
+                    <div class="store-header" onclick="filterStore('myntra')">
+                        <div class="store-icon myntra"><i class='bx bx-shopping-bag'></i></div>
+                        <h3>Myntra</h3>
+                        <span class="store-offer">Flat 50-70% OFF</span>
+                    </div>
+                    <div class="product-grid">
+                        <!-- Product 1 -->
+                        <div class="product-card">
+                            <div class="product-img">
+                                <img src="https://assets.myntassets.com/h_1440,q_90,w_1080/v1/assets/images/2222678/2017/11/3/11509712506797-Roadster-Men-Black-Solid-Hoodie-8881509712506555-1.jpg" alt="Hoodie">
+                            </div>
+                            <div class="product-title">Men Black Hoodie</div>
+                            <div class="product-price">
+                                <span class="current-price">₹899</span>
+                                <span class="original-price">₹2,599</span>
+                                <span class="discount">65%</span>
+                            </div>
+                            <div class="rating">
+                                <i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star-half'></i>
+                                <span>(4.5k)</span>
+                            </div>
+                            <a href="#" class="buy-btn" target="_blank"><i class='bx bx-cart-add'></i> Buy Now</a>
+                        </div>
+                        <!-- Product 2 -->
+                        <div class="product-card">
+                            <div class="product-img">
+                                <img src="https://assets.myntassets.com/h_1440,q_90,w_1080/v1/assets/images/1835925/2017/5/19/11495177718331-High-Lander-Men-Black-Solid-Cap-8921495177718331-1.jpg" alt="Cap">
+                            </div>
+                            <div class="product-title">Men Black Cap</div>
+                            <div class="product-price">
+                                <span class="current-price">₹499</span>
+                                <span class="original-price">₹999</span>
+                                <span class="discount">50%</span>
+                            </div>
+                            <div class="rating">
+                                <i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i>
+                                <span>(2.3k)</span>
+                            </div>
+                            <a href="#" class="buy-btn" target="_blank"><i class='bx bx-cart-add'></i> Buy Now</a>
+                        </div>
+                        <!-- Product 3 -->
+                        <div class="product-card">
+                            <div class="product-img">
+                                <img src="https://assets.myntassets.com/h_1440,q_90,w_1080/v1/assets/images/11216124/2020/1/20/82522290-5e8b-4c66-931c-bd4d8c1a4a891579521243770-Roadster-Men-Black-Solid-Polo-Collar-T-shirt-752157952124357-1.jpg" alt="T-Shirt">
+                            </div>
+                            <div class="product-title">Men Black Polo T-shirt</div>
+                            <div class="product-price">
+                                <span class="current-price">₹599</span>
+                                <span class="original-price">₹1,299</span>
+                                <span class="discount">54%</span>
+                            </div>
+                            <div class="rating">
+                                <i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i>
+                                <span>(6.7k)</span>
+                            </div>
+                            <a href="#" class="buy-btn" target="_blank"><i class='bx bx-cart-add'></i> Buy Now</a>
+                        </div>
+                        <!-- Product 4 -->
+                        <div class="product-card">
+                            <div class="product-img">
+                                <img src="https://assets.myntassets.com/h_1440,q_90,w_1080/v1/assets/images/2077983/2018/5/30/11527682593234-Roadster-Men-Black-Solid-Bomber-Jacket-6541527682593197-1.jpg" alt="Jacket">
+                            </div>
+                            <div class="product-title">Men Bomber Jacket</div>
+                            <div class="product-price">
+                                <span class="current-price">₹1,299</span>
+                                <span class="original-price">₹3,299</span>
+                                <span class="discount">61%</span>
+                            </div>
+                            <div class="rating">
+                                <i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star-half'></i>
+                                <span>(3.4k)</span>
+                            </div>
+                            <a href="#" class="buy-btn" target="_blank"><i class='bx bx-cart-add'></i> Buy Now</a>
+                        </div>
+                        <!-- Product 5 -->
+                        <div class="product-card">
+                            <div class="product-img">
+                                <img src="https://assets.myntassets.com/h_1440,q_90,w_1080/v1/assets/images/10061485/2019/8/2/73be2e75-358f-4b2e-a7b1-85d29fc7de2d1564739432692-Skybags-Men-Black-Backpack-341564739432570-1.jpg" alt="Backpack">
+                            </div>
+                            <div class="product-title">Men Laptop Backpack</div>
+                            <div class="product-price">
+                                <span class="current-price">₹1,099</span>
+                                <span class="original-price">₹2,499</span>
+                                <span class="discount">56%</span>
+                            </div>
+                            <div class="rating">
+                                <i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i>
+                                <span>(5.2k)</span>
+                            </div>
+                            <a href="#" class="buy-btn" target="_blank"><i class='bx bx-cart-add'></i> Buy Now</a>
+                        </div>
+                        <!-- Product 6 -->
+                        <div class="product-card">
+                            <div class="product-img">
+                                <img src="https://assets.myntassets.com/h_1440,q_90,w_1080/v1/assets/images/13855984/2021/6/24/bbd75b33-7ea7-4e5c-8c98-a01730ed93eb1624533330972-Puma-Men-Black-Sneakers-1511624533330825-1.jpg" alt="Shoes">
+                            </div>
+                            <div class="product-title">Men Running Shoes</div>
+                            <div class="product-price">
+                                <span class="current-price">₹1,799</span>
+                                <span class="original-price">₹3,999</span>
+                                <span class="discount">55%</span>
+                            </div>
+                            <div class="rating">
+                                <i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star-half'></i>
+                                <span>(8.1k)</span>
+                            </div>
+                            <a href="#" class="buy-btn" target="_blank"><i class='bx bx-cart-add'></i> Buy Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== FOOTER WITH AFFILIATE LINKS ===== -->
+        <footer class="shop-footer">
+            <h3 class="footer-title">🛒 Shop Directly from Our Partners</h3>
+            
+            <div class="store-links-grid">
+                <!-- Flipkart Affiliate Link -->
+                <a href="https://fktr.in/6b80Huu" target="_blank" class="store-link-card flipkart">
+                    <div class="store-link-icon"><i class='bx bxl-flipkart'></i></div>
+                    <h4>Flipkart</h4>
+                    <span class="store-badge">Shop Now →</span>
+                </a>
+
+                <!-- Amazon Affiliate Link -->
+                <a href="https://amzn.to/3YJZQZQ" target="_blank" class="store-link-card amazon">
+                    <div class="store-link-icon"><i class='bx bxl-amazon'></i></div>
+                    <h4>Amazon</h4>
+                    <span class="store-badge">Shop Now →</span>
+                </a>
+
+                <!-- ShopSy Affiliate Link -->
+                <a href="https://bitli.in/RFY3Kwu" target="_blank" class="store-link-card shopsy">
+                    <div class="store-link-icon"><i class='bx bx-store-alt'></i></div>
+                    <h4>ShopSy</h4>
+                    <span class="store-badge">Shop Now →</span>
+                </a>
+
+                <!-- Myntra Affiliate Link -->
+                <a href="https://myntr.it/gQFeIKj" target="_blank" class="store-link-card myntra">
+                    <div class="store-link-icon"><i class='bx bx-shopping-bag'></i></div>
+                    <h4>Myntra</h4>
+                    <span class="store-badge">Shop Now →</span>
+                </a>
+            </div>
+
+            <div class="affiliate-note">
+                <p>
+                    <i class='bx bx-link'></i> Affiliate Disclosure: As an Amazon Associate, Flipkart Affiliate, Myntra Partner, and ShopSy Partner, 
+                    I earn from qualifying purchases at <strong>no extra cost to you</strong>. 
+                    <i class='bx bx-heart' style="color: #ff4d4d;"></i>
+                </p>
+                <p style="margin-top: 10px; font-size: 13px;">
+                    Click on any store above to start shopping | © 2026 Rajesh Gupta - Cybersecurity Professional
+                </p>
+            </div>
+        </footer>
+    </section>
+
+    <!-- AOS Script -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init();
+
+        // Mobile Menu Toggle - EXACT COPY FROM ABOUT PAGE
+        document.addEventListener('DOMContentLoaded', function() {
+            const nav = document.querySelector('nav');
+            const navMenu = document.querySelector('nav ul');
+            const menuToggle = document.querySelector('.menu-toggle');
+            
+            if (menuToggle) {
+                menuToggle.addEventListener('click', function() {
+                    this.classList.toggle('active');
+                    navMenu.classList.toggle('active');
+                });
+                
+                document.querySelectorAll('nav ul li a').forEach(link => {
+                    link.addEventListener('click', function() {
+                        menuToggle.classList.remove('active');
+                        navMenu.classList.remove('active');
+                    });
+                });
+                
+                document.addEventListener('click', function(event) {
+                    if (!nav.contains(event.target)) {
+                        menuToggle.classList.remove('active');
+                        navMenu.classList.remove('active');
+                    }
+                });
+            }
+        });
+
+        // Store Filter Functionality
+        const categoryBtns = document.querySelectorAll('.category-btn');
+        const storeSections = document.querySelectorAll('.store-section');
+        const storeGrid = document.getElementById('storeGrid');
+        const backBtnContainer = document.getElementById('backBtnContainer');
+
+        function filterStore(storeName) {
+            categoryBtns.forEach(btn => btn.classList.remove('active'));
+            document.querySelector(`[data-store="${storeName}"]`).classList.add('active');
+            
+            storeSections.forEach(section => {
+                if(section.dataset.store === storeName) {
+                    section.style.display = 'block';
+                } else {
+                    section.style.display = 'none';
+                }
+            });
+            
+            storeGrid.style.display = 'block';
+            backBtnContainer.style.display = 'block';
+        }
+
+        function showAllStores() {
+            categoryBtns.forEach(btn => btn.classList.remove('active'));
+            document.querySelector('[data-store="all"]').classList.add('active');
+            
+            storeSections.forEach(section => {
+                section.style.display = 'block';
+            });
+            
+            backBtnContainer.style.display = 'none';
+        }
+
+        categoryBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                const store = this.dataset.store;
+                if(store === 'all') {
+                    showAllStores();
+                } else {
+                    filterStore(store);
+                }
+            });
+        });
+
+        // Make functions globally available for onclick events
+        window.filterStore = filterStore;
+        window.showAllStores = showAllStores;
+    </script>
+</body>
+</html>
